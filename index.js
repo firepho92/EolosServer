@@ -4,9 +4,11 @@ const routes = require('./routes')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const { dbData } = require('./config')
+const logFile = fs.createWriteStream('./myLogFile.log', {flags: 'a'}); //use {flags: 'w'} to open in write mode
 
 const app = express()
 
+app.use(express.logger({ stream: logFile }))
 app.use(morgan('combined'))
 
 app.use(bodyParser.json())
