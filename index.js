@@ -5,13 +5,13 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 const { dbData } = require('./config')
 const fs = require('fs')
-
-const logFile = fs.createWriteStream('./myLogFile.log', {flags: 'a'}); //use {flags: 'w'} to open in write mode
+const path = require('path')
 
 const app = express()
 
-app.use(express.logger({ stream: logFile }))
-app.use(morgan('combined'))
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
+
+app.use(morgan('combined', { stream: accessLogStream }))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
