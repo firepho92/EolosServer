@@ -24,7 +24,6 @@ const postStation = async (req, res) => {
 
 const putStation = async (req, res) => {
 	const { id, wlan, ethlan, publicIP, status } = req.body
-	console.log(localIP + ' ' + externalIP)
 	try {
 		const result = await updateStation(id, wlan, ethlan, publicIP, status)
 		res.status(200).send(result)
