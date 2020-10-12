@@ -2,8 +2,9 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const Station = new Schema ({
-	externalIP: { type: String },
-	internalIP: { type: String },
+	publicIP: { type: String },
+	wlan: { type: String },
+	ethlan: { type: String },
 	user: { type: Schema.Types.ObjectId },
 	status: { type: Boolean },
 	latitude: { type: String },

@@ -27,9 +27,9 @@ const createStation = async (data) => {
 	}
 }
 
-const updateStation = async (id, localIP, externalIP, status) => {
+const updateStation = async (id, wlan, ethlan, publicIP, status) => {
 	try {
-		return await StationModel.findByIdAndUpdate(id, { externalIP: externalIP, internalIP: localIP, status: status })
+		return await StationModel.findByIdAndUpdate(id, { wlan: wlan, ethlan: ethlan, publicIP: publicIP, status: status })
 	} catch(e) {
 		throw e
 	}

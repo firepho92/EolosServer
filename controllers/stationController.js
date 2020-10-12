@@ -23,10 +23,10 @@ const postStation = async (req, res) => {
 }
 
 const putStation = async (req, res) => {
-	const { id, localIP, externalIP, status } = req.body
+	const { id, wlan, ethlan, publicIP, status } = req.body
 	console.log(localIP + ' ' + externalIP)
 	try {
-		const result = await updateStation(id, localIP, externalIP, status)
+		const result = await updateStation(id, wlan, ethlan, publicIP, status)
 		res.status(200).send(result)
 	} catch(e) {
 		console.log(e)
